@@ -1,5 +1,11 @@
 package main;
 
+/*******************************
+ * Aqui se hace la inyeccion   *
+ * a la Base de Datos "films". *
+ *                             *
+ ******************************/
+
 import modelos.Pelicula;
 
 import gestores.GestorPeliculas;
