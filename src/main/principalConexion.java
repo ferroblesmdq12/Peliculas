@@ -116,29 +116,6 @@ public class principalConexion {
 	 }
 	
 	
-	/*******************
-	 *                 *
-	 * BUSCAR POR ID   *
-	 *                 *
-	 ******************/
-	
-	private static void buscarPorId(PelisDAO<Pelicula, Integer> PeliculasDAO, Scanner scanner) {
-		
-		System.out.println("Ingrese el codigo de la pelicula: ");
-		int codigoId = scanner.nextInt();
-		Pelicula pelicula = PeliculasDAO.buscarPorId(codigoId);
-		if(pelicula != null)
-		{
-			System.out.println("<La pelicula encontrada> es: " + pelicula);
-		}else
-		{
-			System.out.println("No se encontro ninguna pelicula con ese codigo.");
-		}
-		
-	}
-	
-	
-	
 	/**************
 	 * INSERTAR   *
 	 *************/
@@ -339,6 +316,31 @@ public class principalConexion {
 			}
 			
 		}
+
+
+
+
+
+			/*******************
+			 *                 *
+			 * BUSCAR POR ID   *
+			 *                 *
+			 ******************/
+			
+			private static void buscarPorId(PelisDAO<Pelicula, Integer> PeliculasDAO, Scanner scanner) {
+				
+				System.out.println("Ingrese el codigo de la pelicula: ");
+				int codigoId = scanner.nextInt();
+				Pelicula pelicula = PeliculasDAO.buscarPorId(codigoId);
+				if(pelicula != null)
+				{
+					System.out.println("<La pelicula encontrada> es: " + pelicula);
+				}else
+				{
+					System.out.println("No se encontro ninguna pelicula con ese codigo.");
+				}
+				
+			}
 		
 		
 		
