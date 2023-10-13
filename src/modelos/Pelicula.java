@@ -13,25 +13,25 @@ public class Pelicula {
 	    private String titulo;
 	    private String url;
 	    private String imagenPromocional;
-	    private List<Genero> generos;
+	    private int generos;
 	    
 	 // CONSTRUCTOR POR DEFECTO //
 	    
 	    public Pelicula() {
 	    	
-	    	generos = new ArrayList<>();
+	    	
 	    }
 		
 	   
 	// CONSTRUCTOR PARAMETRIZADO //
 
-		public Pelicula(int Id, String titulo,String url, String imagenPromocional) {
+		public Pelicula(int Id, String titulo,String url, String imagenPromocional, int generos) {
 			
 			this.Id = Id;
 			this.titulo = titulo;
 			this.url = url;
 			this.imagenPromocional = imagenPromocional;
-			this.generos = new ArrayList<>();
+			this.generos = generos;
 				
 		}
 		
@@ -66,7 +66,7 @@ public class Pelicula {
 		}
 
 
-		public void setGeneros(List<Genero> generos) {
+		public void setGeneros(int generos) {
 			this.generos = generos;
 		}
 
@@ -91,13 +91,11 @@ public class Pelicula {
 		}
 
 
-		public List<Genero> getGeneros() {
+		public int getGeneros() {
 			return generos;
 		}
 		
-		public void agregarGenero(Genero genero) {
-			generos.add(genero);
-		}
+		
 		
 
 }

@@ -5,7 +5,7 @@
 package main;
 
 import modelos.Pelicula;
-import modelos.Genero;
+
 import gestores.GestorPeliculas;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,28 +20,23 @@ public class main {
 		System.out.println("\t PROYECTO PELICULAS  \n");
 		
 		Scanner scanner = new Scanner(System.in);
-		String tituloBuscado, generoBuscado;
-		
+		String tituloBuscado;
+		int generoBuscado;
 		
 		// Creamos los objetos generos //
 		
-		Genero genAccion = new Genero("Acción");
-		Genero genDrama = new Genero("Drama");
-		Genero genComedia = new Genero("Comedia");
-		Genero genTerror = new Genero("Terror");
-		Genero genInfantil = new Genero("Infantil");
-		Genero genDocumental = new Genero("Documental");
+		
 		
 		//Creamos los objetos peliculas//
 		
-		Pelicula pelicula1 = new Pelicula(1, "Rapido y Furioso", "http://pelicula1.com", "imagen1.jpg");
-        pelicula1.agregarGenero(genAccion);
-
-        Pelicula pelicula2 = new Pelicula(2, "¿ Que pasó Ayer ?", "http://pelicula2.com", "imagen2.jpg");
-        pelicula2.agregarGenero(genComedia);
+		Pelicula pelicula1 = new Pelicula(1, "Rapido y Furioso", "http://pelicula1.com", "imagen1.jpg",1);
         
-        Pelicula pelicula3 = new Pelicula(3, "Masacre En Texas", "http://pelicula3.com", "imagen3.jpg");
-        pelicula3.agregarGenero(genTerror);
+
+        Pelicula pelicula2 = new Pelicula(2, "¿ Que pasó Ayer ?", "http://pelicula2.com", "imagen2.jpg",3);
+        
+        
+        Pelicula pelicula3 = new Pelicula(3, "Masacre En Texas", "http://pelicula3.com", "imagen3.jpg", 4);
+        
         
         // Agregamos las Peliculas a lIsta //
         GestorPeliculas.agregarPelicula(pelicula1);
@@ -72,22 +67,23 @@ public class main {
         // buscamos pelicula por genero//
         System.out.println("\nIngrese el genero que busca: ");
         //generoBuscado = scanner.nextLine();
-        generoBuscado = "Acción";
+        generoBuscado = 1;
         List<Pelicula> peliculasPorGenero = obtenerPeliculasPorGenero(generoBuscado, GestorPeliculas.getPeliculas());
         if (peliculasPorGenero.isEmpty()) {
             System.out.println("No se encontraron películas del género: " + generoBuscado);
         } else {
             System.out.println("Peliculas encontradas por género:");
             for (Pelicula pelicula : peliculasPorGenero) {
-            	System.out.println("- " + pelicula.getId() + " ; " + pelicula.getTitulo());
+            	System.out.println("- " + pelicula.getId() + " ; " + pelicula.getTitulo() +  " ; " + pelicula.getGeneros());
             }
         }
         
-        // Busca pelicula por ID //
+       // OPERACION BUSCA POR ID //
         System.out.println("\n Ingrese el codigo de la pelicula que busca: ");
-        int codigoPelicula = scanner.nextInt();
-        
+        int codigoPelicula = scanner.nextInt();  
         Pelicula seleccionPelicula = GestorPeliculas.getPeliculaById(codigoPelicula);
+
+       
         
         if(seleccionPelicula != null)
         {
@@ -101,6 +97,28 @@ public class main {
         {
         	System.out.println("No se encontro el codigo de la pelicula...");
         }
+        
+     
+        //OPERACION BUSCA POR GENERO //
+        System.out.println("\nIngrese el codigo de genero que busca: ");
+        generoBuscado = scanner.nextInt();
+        
+        Pelicula generoPelicula = GestorPeliculas.getPeliculaByGenero(generoBuscado);
+        
+        if(generoPelicula != null)
+        {
+        	System.out.println("Descripción de la Pelicula: \n");
+        	System.out.println("TITULO : " + generoPelicula.getTitulo());
+        	System.out.println("URL: " + generoPelicula.getUrl());
+        	System.out.println("IMAGEN PORTADA : " + generoPelicula.getImagenPromocional());
+        	System.out.println("GENERO : " + generoPelicula.getGeneros());
+        }
+        else
+        {
+        	System.out.println("No se encontro el codigo de la pelicula...");
+        }
+        
+        
      
 	}
 	
@@ -132,14 +150,15 @@ public class main {
 	
 	
 	
-	public static List<Pelicula> obtenerPeliculasPorGenero(String genero, List<Pelicula> peliculas) {
+	public static List<Pelicula> obtenerPeliculasPorGenero(int genero, List<Pelicula> peliculas) {
 	    List<Pelicula> peliculasPorGenero = new ArrayList<>();
+	   
 	    for (Pelicula pelicula : peliculas) {
-	        for (Genero g : pelicula.getGeneros()) {
-	            if (g.getNombre().equalsIgnoreCase(genero)) {
+	
+	            if (pelicula.getGeneros() == genero) {
 	                peliculasPorGenero.add(pelicula);
 	                break; // No need to check other genres for this movie
-	            }
+	           
 	        }
 	    }
 	    return peliculasPorGenero;

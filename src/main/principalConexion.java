@@ -1,5 +1,11 @@
 package main;
 
+/*******************************
+ * Aqui se hace la inyeccion   *
+ * a la Base de Datos "films". *
+ *                             *
+ ******************************/
+
 import modelos.Pelicula;
 
 import gestores.GestorPeliculas;
@@ -109,7 +115,7 @@ public class principalConexion {
 		 }
 	 }
 	
-	
+
 	/*******************
 	 *                 *
 	 * BUSCAR POR ID   *
@@ -133,6 +139,7 @@ public class principalConexion {
 	
 	
 	
+
 	/**************
 	 * INSERTAR   *
 	 *************/
@@ -196,17 +203,27 @@ public class principalConexion {
 		{
 			System.out.println(pelicula);
 			
+
 			
-			String nuevoTitulo = obtenerTituloNuevo(scanner);
+		;
+
+			Scanner scanner1 = new Scanner(System.in);
+			Scanner scanner2 = new Scanner(System.in);
+			Scanner scanner3 = new Scanner(System.in);
+			Scanner scanner4 = new Scanner(System.in);
+
+			
+			
+			String nuevoTitulo = obtenerTituloNuevo(scanner1);
 			pelicula.setTitulo(nuevoTitulo);
 			
-			String nuevaURL = obtenerUrlNueva(scanner);
+			String nuevaURL = obtenerUrlNueva(scanner1);
 			pelicula.setUrl(nuevaURL);
 			
-			String nuevaImagen = obtenerImagenNueva(scanner);
+			String nuevaImagen = obtenerImagenNueva(scanner1);
 			pelicula.setImagenPromocional(nuevaImagen);
 			
-			int nuevoCodigoGenero = obtenerCodigoNuevoGenero(scanner);
+			int nuevoCodigoGenero = obtenerCodigoNuevoGenero(scanner1);
 			pelicula.setGeneros(nuevoCodigoGenero);
 			
 			
@@ -327,6 +344,8 @@ public class principalConexion {
 			}
 			
 		}
+
+
 		
 		
 		

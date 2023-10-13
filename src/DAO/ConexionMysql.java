@@ -21,7 +21,7 @@ public interface ConexionMysql {
 		//Definimos un String que representa la ubicacion del DRIVER JDBC //
 		String driver = "com.mysql.cj.jdbc.Driver";
 		
-		String url = "jdbc:mysql://localhost:3306/cotizaciones"; // Para saber donde esta ubicada el motor de la base (mi caso es local) //
+		String url = "jdbc:mysql://localhost:3306/films"; // Para saber donde esta ubicada el motor de la base (mi caso es local) //
 		
 		/* CONSTRUCTOR DE CONEXION */
 		Connection conexion = null; // Interfaz con la que iniciamos la conexion //
