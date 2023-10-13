@@ -70,7 +70,17 @@ public class GestorPeliculas {
 				return p;
 			}
 		}
-		return null; // retorna nullo si el id no se encuentra.
+		return null; // retorna nulo si el id no se encuentra.
+	}
+	
+	public static Pelicula getPeliculaByGenero(int codigoGenero) {
+		for(Pelicula p: peliculas) {
+			if(p.getGeneros() == codigoGenero) {
+				return p;
+			}
+		}
+		
+		return null;
 	}
 
 }
